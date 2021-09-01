@@ -1,0 +1,23 @@
+/*
+ * @lc app=leetcode.cn id=28 lang=javascript
+ *
+ * [28] 实现 strStr()
+ */
+
+// @lc code=start
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function (haystack, needle) {
+  let r = -1;
+  haystack.replace(needle, function (match, offset) {
+    r = offset
+    return ''
+  })
+  return r;
+
+};
+// @lc code=end
+

@@ -15,35 +15,30 @@
 
 
 const compare = (a = '', b = '') => {
+
+    const map = new Map([
+        ['rc', -1],
+        ['brta', -2],
+        ['alpha', -3]
+    ])
+    const isNum = (s) => /[0-9]+/.test(s);
+
     const arrA = a.split('.');
     const arrB = b.split('.');
-    const maxL = Math.max(a.length, b.length);
-    const preMap = new Map([
-        ['alpha', -0.999],
-        ['beta', -0.99],
-        ['rc', -0.9]
-    ])
+    const maxL = Math.max(arrA.length, arrB.length);
 
-    const getValue = (arr = []) => {
-        return arr.reduce((pre, curr, index) => {
-            const item = /[0-9]+/.test(curr) ? curr * 1 : preMap.get(curr);
-            pre = pre + item * Math.pow(10, maxL - index)
-            return pre
-        }, 0)
-
+    let i = 0;
+    while (i < maxL) {
+        const ai = isNum(arrA[i] || 0) ? (arrA[i] || 0) * 1 : map.get(arrA[i]);
+        const bi = isNum(arrB[i] || 0) ? (arrB[i] || 0) * 1 : map.get(arrB[i]);
+        if (ai === bi) {
+            i++
+        } else {
+            return ai > bi ? 1 : -1
+        }
     }
-    const ar = getValue(arrA);
-    const br = getValue(arrB);
-
-    if (ar === br) {
-        return 0
-    }
-    if (ar > br) {
-        return 1
-    }
-    return -1
-
+    return 0
 }
 
 
-console.log(compare('alpha.1', 'rc.2'))
+console.log(compare('1.31.0.beta.1', '1.21.0.beta.1'))

@@ -1,4 +1,4 @@
-
+// 网约车
 
 var value = 1;
 
@@ -243,6 +243,15 @@ class EventBus {
 // curry
 function curry(fn) {
 
+  return function curried(...args) {
+    if (fn.length <= args.length) {
+      return fn.apply(this, args)
+    } else {
+      return function (...restArgs) {
+        return curried.apply(this, args.concat(restArgs))
+      }
+    }
+  }
 }
 
 

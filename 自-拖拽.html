@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* body {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      } */
+      #drag {
+        width: 200px;
+        height: 200px;
+        background: #ccc;
+        position: fixed;
+        padding: 20px;
+        border: 10px solid rebeccapurple;
+        /* margin: 50px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="drag"></div>
+    <script>
+      // window.onload = function () {
+      const $el = document.querySelector("#drag");
+
+      function mouseDown(e) {
+        console.log("mouseDown", e);
+        // 获取当前dom位置
+        const { top, left } = $el.getBoundingClientRect();
+        console.log($el.getBoundingClientRect());
+        // console.log(top, left);
+        // 获取鼠标位置
+        const { x, y } = e;
+
+        const offsetX = x - left;
+        const offsetY = y - top;
+
+        document.onmousemove = function (e) {
+          const { x, y } = e;
+
+          console.log(e);
+          $el.style.left = `${x - offsetX}px`;
+          $el.style.top = `${y - offsetY}px`;
+        };
+      }
+
+      function mouseUp(e) {
+        console.log("mouseUp", e);
+        document.onmousemove = null;
+      }
+
+      function mouseMove(e) {
+        console.log(e);
+      }
+
+      $el.onmouseup = mouseUp;
+      $el.onmousedown = mouseDown;
+
+      // function mouseDown(e) {
+      //   console.log(e);
+      // }
+      // };
+    </script>
+  </body>
+</html>

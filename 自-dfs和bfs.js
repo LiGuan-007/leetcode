@@ -104,3 +104,18 @@ function levalBfs(root) {
 }
 
 console.log(snackBfs(tree))
+
+
+var lengthOfLongestSubstring = function (s) {
+  var str = [], maxlength = 0;
+  for (var i = 0; i < s.length; i++) {
+    var index = str.indexOf(s[i]);
+    if (index != -1) {
+      str.splice(0, index + 1)
+    }
+    str.push(s[i]);
+    maxlength = Math.max(maxlength, str.length);
+  }
+  return maxlength;
+
+};

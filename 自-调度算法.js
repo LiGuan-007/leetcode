@@ -29,6 +29,31 @@ class FIFO {
 
 
 class LRU {
+  constructor(limit) {
+    this.limit = limit || 1;
+    this.stack = new Set();
+  }
+
+  add(task) {
+    if (this.stack.size < this.limit) {
+      this.stack.add(task)
+      return
+    }
+
+    if (this.stack.has(task)) {
+      this.stack.delete(task);
+      this.stack.add(task);
+    } else {
+      this.removeFirst()
+      this.add(task)
+    }
+
+  }
+
+  removeFirst() {
+    const [first, ...rest] = [...this.stack]
+    this.stack = new Set(rest);
+  }
 
 }
 

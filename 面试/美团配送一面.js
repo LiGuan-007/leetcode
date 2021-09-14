@@ -47,6 +47,7 @@ function compose(...fns) {
     }
   }
 }
+
 function testCompose() {
   let init = (...args) => args.reduce((ele1, ele2) => ele1 + ele2, 0)
   let step2 = (val) => val + 2

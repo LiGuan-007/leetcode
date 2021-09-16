@@ -1,3 +1,4 @@
+// 组合式继承
 function Person(name, age) {
   this.name = name;
   this.age = age;

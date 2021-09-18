@@ -3,6 +3,14 @@
 
 // axios原理
 
+// css
+// 动画
+// 居中
+// 缩放 
+// meta viewport scale
+
+// 常见contenttype
+
 // webpack
 // webpack打包原理
 // 常见loader，cssloader、styleloader
